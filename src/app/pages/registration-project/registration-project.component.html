@@ -1,0 +1,108 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()"  [nzLayout]="validateForm.get('formLayout')?.value">
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="fullname" nzRequired>
+          <span>
+            Full Name
+            <i
+              nz-icon
+              nz-tooltip
+              nzTitle="What do you want other to call you"
+              nzType="question-circle"
+              nzTheme="outline"
+            ></i>
+          </span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your Full Name!">
+          <input nz-input id="fullname" formControlName="fullname" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="jobtitle" >Job Title</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input jobtitle!">
+          <input nz-input id="jobtitle" formControlName="jobtitle" placeholder="jobtitle" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="organization" nzRequired>
+          <span>
+            Organization
+          </span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your organization!">
+          <input nz-input id="organization" formControlName="organization" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzRequired nzFor="email">E-mail</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+          <input nz-input formControlName="email" id="email" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="password" nzRequired>Password</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your password!">
+          <input
+            nz-input
+            type="password"
+            id="password"
+            formControlName="password"
+            (ngModelChange)="updateConfirmValidator()"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="phonenumber" >Phone Number</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input Phone Number!">
+          <input nz-input id="phonenumber" formControlName="phonenumber" placeholder="phonenumber" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="country" nzRequired>Country</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input Country!">
+          <input nz-input id="country" formControlName="country" placeholder="country" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item>
+        <nz-form-label  nzFor="conferencecode" >Conference Code</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input Conference Code!">
+          <input nz-input id="conferencecode" formControlName="conferencecode" placeholder="conferencecode" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <label nz-checkbox formControlName="agree">
+        <span>I have read the <a>agreement</a></span>
+      </label>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Register</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
