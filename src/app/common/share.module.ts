@@ -8,6 +8,7 @@ import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {AlertComponent} from './alert/alert.component';
 import {MessageComponent} from './message/message.component';
 import {MessageService} from './message/message.service';
+import {RouterModule} from '@angular/router';
 
 const SHARE_COMPONENTS = [
   HeaderComponent,
@@ -28,7 +29,8 @@ const SHARE_ANT_MODULE = [
   ],
   imports: [
     CommonModule,
-    ...SHARE_ANT_MODULE
+    ...SHARE_ANT_MODULE,
+    RouterModule
   ],
   providers: [
     ...SHARE_COMPONENTS,
