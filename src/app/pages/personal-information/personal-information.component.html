@@ -1,5 +1,5 @@
 <form nz-form [formGroup]="validateForm"
-      [nzLayout]="validateForm.get('formLayout')?.value">
+      [nzLayout]="validateForm.get('formLayout')?.value" xmlns="http://www.w3.org/1999/html">
 <nz-collapse>
   <nz-collapse-panel
     *ngFor="let p of pic"
@@ -31,7 +31,7 @@
 
   </nz-collapse-panel>
 </nz-collapse>
-<nz-divider></nz-divider>
+<br/>
 <nz-collapse>
   <nz-collapse-panel
     *ngFor="let p of basic"
