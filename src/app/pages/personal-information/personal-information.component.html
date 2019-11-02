@@ -1,0 +1,140 @@
+<form nz-form [formGroup]="validateForm"
+      [nzLayout]="validateForm.get('formLayout')?.value">
+<nz-collapse>
+  <nz-collapse-panel
+    *ngFor="let p of pic"
+    [nzHeader]="p.name"
+    [nzActive]="p.active"
+    [nzDisabled]="p.disabled"
+    [nzShowArrow]="p.arrow"
+  >
+      <nz-row [nzGutter]="8">
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzFor="picture">Picture
+            </nz-form-label>
+            <nz-form-control [nzSm]="20" [nzXs]="24">
+              <nz-avatar [nzShape]="'square'" [nzSize]="64" [nzIcon]="'user'"></nz-avatar>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzFor="identifier">Identifier
+            </nz-form-label>
+            <nz-form-control [nzSm]="20" [nzXs]="24">
+              <p>000000000000</p>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+
+  </nz-collapse-panel>
+</nz-collapse>
+<nz-divider></nz-divider>
+<nz-collapse>
+  <nz-collapse-panel
+    *ngFor="let p of basic"
+    [nzHeader]="p.name"
+    [nzActive]="p.active"
+    [nzDisabled]="p.disabled"
+    [nzShowArrow]="p.arrow"
+  >
+
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzFor="fullName" nzRequired>Full Name
+          </nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your Full Name!">
+            <input nz-input id="fullName" formControlName="fullName" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzFor="jobTitle" >Job Title</nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24">
+            <input nz-input id="jobTitle" formControlName="jobTitle" placeholder="jobTitle" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzFor="organization" nzRequired>Organization</nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your organization!">
+            <input nz-input id="organization" formControlName="organization" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzRequired nzFor="email">E-mail</nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+            <input nz-input formControlName="email" id="email" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzFor="password" nzRequired>Password</nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your Password!">
+            <input
+              nz-input
+              type="password"
+              id="password"
+              formControlName="password"
+              (ngModelChange)="updateConfirmValidator()"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzFor="phoneNumber" >Phone Number</nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24" >
+            <input nz-input id="phoneNumber" formControlName="phoneNumber" placeholder="phoneNumber" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="12">
+        <nz-form-item>
+          <nz-form-label  nzFor="country" nzRequired>Country</nz-form-label>
+          <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Country!">
+            <nz-select nzShowSearch nzAllowClear formControlName="country" nzPlaceHolder="Select a Country" >
+              <nz-option  *ngFor="let c of countryList" nzLabel={{c}} nzValue={{c}}></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="12">
+        <!--<nz-form-item>-->
+          <!--<nz-form-label  nzFor="conferenceCode" >-->
+          <!--<span>-->
+            <!--Conference Code-->
+            <!--<i-->
+              <!--nz-icon-->
+              <!--nz-tooltip-->
+              <!--nzTitle="The invitation code is optional"-->
+              <!--nzType="question-circle"-->
+              <!--nzTheme="outline"-->
+            <!--&gt;</i>-->
+          <!--</span>-->
+          <!--</nz-form-label>-->
+          <!--<nz-form-control [nzSm]="20" [nzXs]="24" >-->
+            <!--<input nz-input id="conferenceCode" formControlName="conferenceCode" placeholder="conferenceCode" />-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+      </div>
+    </div>
+
+  </nz-collapse-panel>
+</nz-collapse>
+
+</form>
