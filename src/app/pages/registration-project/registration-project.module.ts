@@ -12,6 +12,7 @@ const ANT_MODULE = [
   // NzInputModule,
   // NzSelectModule,
   NgZorroAntdModule,
+
 ];
 @NgModule({
   declarations: [

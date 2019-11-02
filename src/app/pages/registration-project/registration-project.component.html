@@ -2,28 +2,18 @@
   <div nz-row>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label  nzFor="fullname" nzRequired>
-          <span>
-            Full Name
-            <i
-              nz-icon
-              nz-tooltip
-              nzTitle="What do you want other to call you"
-              nzType="question-circle"
-              nzTheme="outline"
-            ></i>
-          </span>
-        </nz-form-label>
+        <nz-form-label  nzFor="fullName" nzRequired>Full Name
+       </nz-form-label>
         <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your Full Name!">
-          <input nz-input id="fullname" formControlName="fullname" />
+          <input nz-input id="fullName" formControlName="fullName" />
         </nz-form-control>
       </nz-form-item>
     </div>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label  nzFor="jobtitle" >Job Title</nz-form-label>
-        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input jobtitle!">
-          <input nz-input id="jobtitle" formControlName="jobtitle" placeholder="jobtitle" />
+        <nz-form-label  nzFor="jobTitle" >Job Title</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24">
+          <input nz-input id="jobTitle" formControlName="jobTitle" placeholder="jobTitle" />
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -31,11 +21,7 @@
   <div nz-row>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label  nzFor="organization" nzRequired>
-          <span>
-            Organization
-          </span>
-        </nz-form-label>
+        <nz-form-label  nzFor="organization" nzRequired>Organization</nz-form-label>
         <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your organization!">
           <input nz-input id="organization" formControlName="organization" />
         </nz-form-control>
@@ -54,7 +40,7 @@
     <div nz-col nzSpan="12">
       <nz-form-item>
         <nz-form-label  nzFor="password" nzRequired>Password</nz-form-label>
-        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your password!">
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your Password!">
           <input
             nz-input
             type="password"
@@ -67,9 +53,9 @@
     </div>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label  nzFor="phonenumber" >Phone Number</nz-form-label>
-        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input Phone Number!">
-          <input nz-input id="phonenumber" formControlName="phonenumber" placeholder="phonenumber" />
+        <nz-form-label  nzFor="phoneNumber" >Phone Number</nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" >
+          <input nz-input id="phoneNumber" formControlName="phoneNumber" placeholder="phoneNumber" />
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -78,16 +64,29 @@
     <div nz-col nzSpan="12">
       <nz-form-item>
         <nz-form-label  nzFor="country" nzRequired>Country</nz-form-label>
-        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input Country!">
-          <input nz-input id="country" formControlName="country" placeholder="country" />
+        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Country!">
+          <nz-select nzShowSearch nzAllowClear formControlName="country" nzPlaceHolder="Select a Country" >
+            <nz-option  *ngFor="let c of countryList" nzLabel={{c}} nzValue={{c}}></nz-option>
+          </nz-select>
         </nz-form-control>
       </nz-form-item>
     </div>
     <div nz-col nzSpan="12">
       <nz-form-item>
-        <nz-form-label  nzFor="conferencecode" >Conference Code</nz-form-label>
-        <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input Conference Code!">
-          <input nz-input id="conferencecode" formControlName="conferencecode" placeholder="conferencecode" />
+        <nz-form-label  nzFor="conferenceCode" >
+          <span>
+            Conference Code
+            <i
+              nz-icon
+              nz-tooltip
+              nzTitle="The invitation code is optional"
+              nzType="question-circle"
+              nzTheme="outline"
+            ></i>
+          </span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="20" [nzXs]="24" >
+          <input nz-input id="conferenceCode" formControlName="conferenceCode" placeholder="conferenceCode" />
         </nz-form-control>
       </nz-form-item>
     </div>
@@ -96,8 +95,8 @@
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <label nz-checkbox formControlName="agree">
-        <span>I have read the <a>agreement</a></span>
-      </label>
+        <span>I have read the <a>agreement</a></span>agree
+      </label>agree
     </nz-form-control>
   </nz-form-item>
   <nz-form-item nz-row class="register-area">
