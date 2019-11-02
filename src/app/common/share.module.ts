@@ -9,6 +9,7 @@ import {AlertComponent} from './alert/alert.component';
 import {MessageComponent} from './message/message.component';
 import {MessageService} from './message/message.service';
 import {RouterModule} from '@angular/router';
+import { MenuComponent } from './menu/menu.component';
 
 const SHARE_COMPONENTS = [
   HeaderComponent,
@@ -16,6 +17,7 @@ const SHARE_COMPONENTS = [
   BreadcrumbComponent,
   AlertComponent,
   MessageComponent,
+  MenuComponent,
 ];
 const SHARE_ANT_MODULE = [
   NzLayoutModule,
@@ -25,7 +27,6 @@ const SHARE_ANT_MODULE = [
 @NgModule({
   declarations: [
     ...SHARE_COMPONENTS,
-
   ],
   imports: [
     CommonModule,
