@@ -5,7 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/pages/personal-information',
+    redirectTo: '/pages/registration-expo',
     pathMatch: 'full'
   },
   {

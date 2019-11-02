@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'personal-information',
         loadChildren: () => import('./personal-information/personal-information.module').then(mod => mod.PersonalInformationModule)
+      },
+      {
+        path: 'registration-expo',
+        loadChildren: () => import('./registration-expo/registration-expo.module').then(mod => mod.RegistrationExpoModule)
       }
     ]
   }
