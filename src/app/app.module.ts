@@ -3,14 +3,14 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {NZ_CONFIG, NZ_I18N, NzConfig, NzLayoutModule, zh_CN} from 'ng-zorro-antd';
+import {en_US, NZ_CONFIG, NZ_I18N, NzConfig, NzLayoutModule} from 'ng-zorro-antd';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
-import zh from '@angular/common/locales/zh';
+import en from '@angular/common/locales/zh';
 
-registerLocaleData(zh);
+registerLocaleData(en);
 const APP_ANT_MODULE = [
   NzLayoutModule,
 ];
@@ -36,7 +36,7 @@ const ngZorroConfig: NzConfig = {
     BrowserAnimationsModule,
     ...APP_ANT_MODULE,
   ],
-  providers: [{provide: NZ_I18N, useValue: zh_CN},
+  providers: [{provide: NZ_I18N, useValue: en_US},
     {provide: NZ_CONFIG, useValue: ngZorroConfig}],
   bootstrap: [AppComponent]
 })

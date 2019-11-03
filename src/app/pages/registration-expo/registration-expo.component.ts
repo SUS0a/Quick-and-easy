@@ -73,6 +73,8 @@ export class RegistrationExpoComponent implements OnInit {
       checkOutDate: [null],
       foodChoice: [null],
       optionalTour: [null],
+
+      agree: [false],
     });
 
     const children: Array<{ label: string; value: string }> = [];
