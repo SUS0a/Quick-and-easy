@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {RegistrationExpoRoutingModule} from './registration-expo-routing.module';
 import {RegistrationExpoComponent} from './registration-expo.component';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const ANT_MODULE = [
   // NzFormModule ,
@@ -20,7 +20,10 @@ const ANT_MODULE = [
     CommonModule,
     RegistrationExpoRoutingModule,
     ...ANT_MODULE,
+    //
     ReactiveFormsModule,
+    //use ngModel
+    FormsModule
   ]
 })
 export class RegistrationExpoModule {

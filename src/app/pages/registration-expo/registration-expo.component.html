@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../personal-information/personal-information.component.less">
 <nz-collapse>
   <nz-collapse-panel
     *ngFor="let panel of panels"
@@ -5,11 +6,248 @@
     [nzActive]="panel.active"
     [nzDisabled]="panel.disabled"
   >
-    <p style="margin:0;">
-      A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
-      guest in many households across the world.{{1==panel.id}}
-    </p>
+    <!--ng-template *ngif is not work-->
+    <form nz-form [formGroup]="validateForm"
+          [nzLayout]="validateForm.get('formLayout')?.value" xmlns="http://www.w3.org/1999/html">
 
+      <ng-container *ngIf="1==panel.id">
+        <div nz-row>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzRequired nzFor="firstName" nzRequired>First Name
+              </nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your First Name!">
+                <input nz-input id="firstName" formControlName="firstName"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzRequired nzFor="lastName">Last Name</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please input your Last Name!">
+                <input nz-input id="lastName" formControlName="lastName"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzRequired nzFor="email">E-mail</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+                <input nz-input formControlName="email" id="email"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzRequired nzFor="telephone">E-mail</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="The input is not valid Telephone!">
+                <input nz-input formControlName="telephone" id="telephone"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzFor="mobile" nzRequired>Mobile</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24">
+                <input nz-input id="mobile" formControlName="mobile"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzFor="fax">Fax</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24">
+                <input nz-input formControlName="fax" id="fax"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzFor="address">Address</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24">
+
+                <textarea nz-input
+                          [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="6">
+            <nz-form-item>
+              <nz-form-label nzFor="gender">Gender</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24">
+                <nz-radio-group [(ngModel)]="radioValue" formControlName="gender">
+                  <label nz-radio [ngStyle]="style" nzValue="R">Mr.</label>
+                  <label nz-radio [ngStyle]="style" nzValue="S">Ms.</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </ng-container>
+      <!--Conference/Expo-->
+      <ng-container *ngIf="2==panel.id">
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="eventName" nzRequired>Event Name</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Event Name!">
+                <nz-select formControlName="eventName"
+                           [nzMaxTagCount]="3"
+                           [nzMaxTagPlaceholder]="tagPlaceHolder"
+                           nzMode="multiple"
+                           nzPlaceHolder="Please select"
+                           [(ngModel)]="listOfSelectedValue">
+                  <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                             [nzValue]="option.value"></nz-option>
+                </nz-select>
+                <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="registrationType" nzRequired>Registration Type</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Registration Type!">
+                <nz-select formControlName="registrationType"
+                           [nzMaxTagCount]="3"
+                           [nzMaxTagPlaceholder]="tagPlaceHolder"
+                           nzMode="multiple"
+                           nzPlaceHolder="Please select"
+                           [(ngModel)]="listOfSelectedValue">
+                  <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                             [nzValue]="option.value"></nz-option>
+                </nz-select>
+                <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="session" nzRequired>Session</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Session!">
+                <nz-select formControlName="session"
+                           [nzMaxTagCount]="3"
+                           [nzMaxTagPlaceholder]="tagPlaceHolder"
+                           nzMode="multiple"
+                           nzPlaceHolder="Please select"
+                           [(ngModel)]="listOfSelectedValue">
+                  <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                             [nzValue]="option.value"></nz-option>
+                </nz-select>
+                <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="ticket" nzRequired>Ticket</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Ticket!">
+                <nz-select formControlName="registrationType"
+                           [nzMaxTagCount]="3"
+                           [nzMaxTagPlaceholder]="tagPlaceHolder"
+                           nzMode="multiple"
+                           nzPlaceHolder="Please select"
+                           [(ngModel)]="listOfSelectedValue">
+                  <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                             [nzValue]="option.value"></nz-option>
+                </nz-select>
+                <span class="form-extra">
+                  <i nz-icon nzType="info-circle" nzTheme="outline"></i>&nbsp;Please click here for more details of Ticket Type.
+                </span>
+                <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="groupRegistration">Group Registration</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24">
+                <nz-radio-group [(ngModel)]="groupRegistrationValue" formControlName="groupRegistration">
+                  <label nz-radio [ngStyle]="style" nzValue="Y">Yes</label>
+                  <label nz-radio [ngStyle]="style" nzValue="N">No</label>
+                </nz-radio-group>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="details">Details</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24">
+
+                <textarea nz-input
+                          [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
+                <span class="form-extra"><i nz-icon nzType="info-circle" nzTheme="outline"></i>&nbsp;If "Yes" Please specify.</span>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </ng-container>
+      <!--Travel Info-->
+      <ng-container *ngIf="3==panel.id">
+        <div nz-row>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="foodChoice">Food Choice</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Food Choice!">
+                <nz-select formControlName="foodChoice"
+                           [nzMaxTagCount]="3"
+                           [nzMaxTagPlaceholder]="tagPlaceHolder"
+                           nzMode="multiple"
+                           nzPlaceHolder="Please select"
+                           [(ngModel)]="listOfSelectedValue">
+                  <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                             [nzValue]="option.value"></nz-option>
+                </nz-select>
+                <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSpan="12">
+            <nz-form-item>
+              <nz-form-label nzFor="optionalTour">Optional Tour</nz-form-label>
+              <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Optional Tour!">
+                <nz-select formControlName="optionalTour"
+                           [nzMaxTagCount]="3"
+                           [nzMaxTagPlaceholder]="tagPlaceHolder"
+                           nzMode="multiple"
+                           nzPlaceHolder="Please select"
+                           [(ngModel)]="listOfSelectedValue">
+                  <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label"
+                             [nzValue]="option.value"></nz-option>
+                </nz-select>
+                <ng-template #tagPlaceHolder let-selectedList> and {{ selectedList.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label nzFor="checkInDate">Check In Date</nz-form-label>
+            <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Check In Date!">
+              <nz-date-picker nzPlaceHolder="Select Time" [nzFormat]="dateFormat"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+          <nz-form-item>
+            <nz-form-label nzFor="checkOutDate">Check Out Date</nz-form-label>
+            <nz-form-control [nzSm]="20" [nzXs]="24" nzErrorTip="Please select Check Out Date!">
+              <nz-date-picker nzPlaceHolder="Select Time" [nzFormat]="dateFormat"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </ng-container>
+      <!--Payment Info-->
+      <ng-container *ngIf="4==panel.id">
+
+      </ng-container>
+    </form>
   </nz-collapse-panel>
 </nz-collapse>
 
